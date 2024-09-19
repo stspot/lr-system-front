@@ -1,11 +1,20 @@
 <h1>Login</h1>
-<form action="">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <label><span>Email:</span>
-        <input type="text" placeholder="example@example.com">
+        <input type="text" formControlName="email" placeholder="example@example.com">
+        <div *ngIf="email?.invalid && email?.touched">
+            <small *ngIf="email?.errors?.['required']">Email is required</small>
+            <small *ngIf="email?.errors?.['email']">Enter a valid email</small>
+        </div>
     </label>
+    
     <label><span>Password:</span>
-        <input type="text" placeholder="aY6!e!!%Su&A4D-O">
+        <input type="password" formControlName="password" placeholder="aY6!e!!%Su&A4D-O">
+        <div *ngIf="password?.invalid && password?.touched">
+            <small *ngIf="password?.errors?.['required']">Password is required</small>
+            <small *ngIf="password?.errors?.['pattern']">{{regexData.PASSWORD_REGEX_MSG_ERR}}</small>
+        </div>
     </label>
-    <a [routerLink]="['/reset-password']">Forgot Password</a>
-    <button>Login</button>
+    <a [routerLink]="['/auth/reset-password']">Forgot Password</a>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
 </form>

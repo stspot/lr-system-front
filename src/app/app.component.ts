@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ToastrService } from 'ngx-toastr';
+import { Store } from '@ngrx/store';
+import { AppState } from './store/app.state';
+import { loadStateFromLocalStorage } from './auth/store/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -14,5 +18,15 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ms-task-front';
+  constructor(
+    
+    private store: Store<AppState>
+  ) { }
+
+  ngOnInit(): void {
+    this.store.dispatch(loadStateFromLocalStorage())
+  }
+
+  ngOnDestroy(): void {
+  }
 }

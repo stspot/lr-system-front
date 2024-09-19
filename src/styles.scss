@@ -1,1 +1,139 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik+Bubbles&display=swap');
+
+html {
+    font-size: 62.5%;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-size: 1.8rem;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.1rem;
+    box-sizing: border-box;
+    color: rgb(48, 48, 48);
+}
+
+button {
+    cursor: pointer;
+    margin: 0.1rem;
+}
+
+p {
+    margin: 0;
+}
+
+h1,h2,h3 {
+    margin: 0;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+a {
+  cursor: pointer;
+}
+
+.a__footer {
+    color: white;
+    text-decoration: none;
+    &:hover {
+        color: yellow;
+        text-decoration: underline;
+    }
+}
+
+ul {
+    margin: 0;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.page-container {
+    text-align: center;
+    margin: 0 auto;
+    padding: 1.5rem;
+    width: 75%;
+    flex-grow: 1;
+}
+
+form {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+      
+      span {
+        display: block;
+        font-size: 1.7rem;
+        font-weight: 500;
+        margin-bottom: 5px;
+        color: #333;
+      }
+  
+      input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+  
+        &:focus {
+          border-color: gray;
+          outline: none;
+        }
+      }
+    }
+  
+    button {
+        margin-top: 1.5rem;
+      width: 100%;
+      padding: 10px;
+    //   background-color: #007bff;
+      background-color: gray;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        // background-color: #0056b3;
+        background-color: darkkhaki;
+      }
+    }
+  }
+
+  .ngx-toastr {
+    width: 50rem !important;  // Specify toastr-dialog width for all devices
+  }

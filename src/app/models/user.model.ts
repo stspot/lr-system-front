@@ -42,15 +42,15 @@ export interface IUserLoginModel {
 }
 
 export interface IUserResetPasswordRequestModel {
-    email: string;
-}
-
-export interface IUserNewPasswordRequestModel {
-    id: string;
+    urpt: string;
     password: string;
 }
 
-export interface INewPasswordRequestModel {
+export interface IResetPasswordResponseModel {
+    message: string;
+}
+
+export interface IUserNewPasswordRequestModel {
     password: string;
 }
 

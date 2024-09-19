@@ -11,6 +11,7 @@ import { UserUpdateComponent } from './users/user-update/user-update.component';
 import { UsersDeleteByIdComponent } from './users/users-delete-by-id/users-delete-by-id.component';
 import { UsersDeleteByIdFakeComponent } from './users/users-delete-by-id-fake/users-delete-by-id-fake.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import { ConfirmRegistrationInfoComponent } from './auth/confirm-registration-info/confirm-registration-info.component';
 
 export const routes: Routes = [
 
@@ -18,10 +19,11 @@ export const routes: Routes = [
 
     {path: 'auth/login', component: LoginComponent},
     {path: 'auth/register', component: RegisterComponent},
-    {path: 'auth/confirm-registration', component: ConfirmRegistrationComponent},
+    {path: 'auth/confirm-registration-info', component: ConfirmRegistrationInfoComponent},
+    {path: 'auth/confirm/registration/:uniqueRegistrationConfirmationLink', component: ConfirmRegistrationComponent},
     {path: 'auth/reset-password', component: ResetPasswordComponent},
-    {path: 'auth/create-new-password', component: CreateNewPasswordComponent},
-
+    {path: 'auth/create/new/password/:urpt', component: CreateNewPasswordComponent},
+    
     {path: 'users/users-all/pages', component: UsersAllPagesComponent},
     {path: 'users/users-all', component: UsersAllComponent},
     {path: 'users/user-profile', component: UserProfileComponent},

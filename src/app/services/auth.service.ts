@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IAuthResponseModel, IUserLoginModel, IUserNewPasswordRequestModel, IUserRegisterModel, IUserResetPasswordRequestModel, IUserResponseModel } from '../models/user.model';
+import { IAuthResponseModel, IResetPasswordResponseModel, IUserLoginModel, IUserNewPasswordRequestModel, IUserRegisterModel, IUserResetPasswordRequestModel, IUserResponseModel } from '../models/user.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -22,14 +22,15 @@ export class AuthService {
       `${this.baseApiUrl}/auth/register`, registerObj);
   }
 
-  resetPassword(resetPasswordObj: IUserResetPasswordRequestModel): Observable<string> {
-    return this.http.post<string>(
+  resetPassword(resetPasswordObj: IUserResetPasswordRequestModel): Observable<IResetPasswordResponseModel> {
+    return this.http.post<IResetPasswordResponseModel>(
       `${this.baseApiUrl}/auth/reset/password`, resetPasswordObj);
   }
 
-  createNewPassword(usfpr: string, newPasswordObj: IUserNewPasswordRequestModel): Observable<Boolean> {
+  createNewPassword(urpt: string, newPasswordObj: IUserNewPasswordRequestModel): Observable<Boolean> {
+    const url: string = `${this.baseApiUrl}/auth/create/new/password/${urpt}`;
     return this.http.post<Boolean>(
-      `${this.baseApiUrl}/auth/create/new/${usfpr}`, newPasswordObj);
+      url, newPasswordObj);
   }
 
   confirmRegistration(confirmLink: string): Observable<string> {

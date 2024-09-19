@@ -1,0 +1,35 @@
+.header {
+    &__line {
+        background-color: rgb(221, 221, 221);
+        padding: 1.5rem;
+    }
+}
+
+.navbar__ul, .navbar__ul__sub {
+    padding: 0;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+    margin-bottom: 0.5rem;
+    & li {
+
+    }
+    & a {
+        display: flex;
+        text-transform: uppercase;
+        color: white;
+        padding: 0.2rem 0.7rem;
+        text-decoration: none;
+        &:hover {
+            background-color: yellow;
+            color: gray;
+        }
+    }
+}
+
+.navbar__ul__sub {
+    display: flex;
+    flex-direction: column;
+}
