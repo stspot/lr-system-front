@@ -27,10 +27,11 @@ export class UserEffects {
      *********************************************************************************
      ********************************************************************************* */
 
-  getLmProfileByUserId$ = createEffect(() => this.actions$.pipe(
+  getUserById$ = createEffect(() => this.actions$.pipe(
     ofType(getUserByIdStart),
     switchMap((action) => this.userService.getById(action.userId).pipe(
       map(response => {
+        console.log('User Id');
         return getUserByIdSucccess({ user: response})
       }),
       catchError(error => of(getUserByIdFail({ error })))

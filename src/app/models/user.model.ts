@@ -6,6 +6,7 @@ export interface IUserResponseModel {
     firstName: string;
     lastName: string;
     birthday: Date;
+    phoneNumber: string;
 }
 
 export interface IRoleResponseModel {

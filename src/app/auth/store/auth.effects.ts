@@ -238,7 +238,9 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(authLogout),
-        tap(() => {})
+        tap(() => {
+          this.router.navigateByUrl('/')
+        })
       ),
     { dispatch: false }
   );
