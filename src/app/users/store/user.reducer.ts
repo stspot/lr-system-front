@@ -1,21 +1,28 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { UserState } from './user.state';
-import { getUserByIdSucccess } from './user.actions';
-import { authLoginSucccess, loadStateFromLocalStorageSuccess } from '../../auth/store/auth.actions';
+import { getAllUsersByPagesSortedSuccess, getLoggedUserByIdSucccess } from './user.actions';
 
 export const USER_NAME = "user";
 
 const initialState: UserState = {
   loggedUser: null,
+  allUsersByPageSorted: []
 };
 
 const _userReducer = createReducer(
   initialState,
 
-  on(getUserByIdSucccess, (state, action) => {
+  on(getLoggedUserByIdSucccess, (state, action) => {
     return {
       ...state,
       loggedUser: action.user
+    }
+  }),
+
+  on(getAllUsersByPagesSortedSuccess, (state, action) => {
+    return {
+      ...state,
+      allUsersByPageSorted: action.usersByPage
     }
   })
 );

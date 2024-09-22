@@ -12,3 +12,8 @@ export const getLoggedUserData = createSelector(getUserState, (state) => {
   return state.loggedUser;
 });
 
+export const getAllUsersByPageSorted = createSelector(getUserState, (state) => {
+  return state.allUsersByPageSorted;
+});
+
+

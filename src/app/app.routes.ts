@@ -11,6 +11,7 @@ import { UsersDeleteByIdComponent } from './users/users-delete-by-id/users-delet
 import { UsersDeleteByIdFakeComponent } from './users/users-delete-by-id-fake/users-delete-by-id-fake.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { ConfirmRegistrationInfoComponent } from './auth/confirm-registration-info/confirm-registration-info.component';
+import { SearchUsersComponent } from './users/search-users/search-users.component';
 
 export const routes: Routes = [
 
@@ -24,6 +25,7 @@ export const routes: Routes = [
     {path: 'auth/create/new/password/:urpt', component: CreateNewPasswordComponent},
     
     {path: 'users/users-all', component: UsersAllComponent},
+    {path: 'users/users-search', component: SearchUsersComponent},
     {path: 'users/user-profile', component: UserProfileComponent},
     {path: 'users/user-update/:userId', component: UserUpdateComponent},
     {path: 'users/user-delete-id', component: UsersDeleteByIdComponent},

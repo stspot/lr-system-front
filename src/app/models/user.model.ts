@@ -32,6 +32,7 @@ export interface IUserRegisterModel {
 }
 
 export interface IUserUpdateModel {
+    id: string;
     firstName: string;
     lastName: string;
     phoneNumber: string;

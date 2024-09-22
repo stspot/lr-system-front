@@ -1,34 +1,24 @@
 <h1>All Users</h1>
-<form [formGroup]="searchUserForm" class="search-form" (ngSubmit)="onSubmit()">
-
-  <label><span>SearchTerm:</span>
-    <input type="text" formControlName="searchTerm" placeholder="...">
-    <div *ngIf="searchTerm?.invalid && searchTerm?.touched">
-      <small *ngIf="searchTerm?.errors?.['required']">Email is required</small>
-    </div>
-  </label>
-
-  <label><span>Birthday:</span>
-    <input type="date" formControlName="birthday">
-    <div *ngIf="birthday?.invalid && birthday?.touched">
-      <small *ngIf="birthday?.errors?.['required']">Birthday is required</small>
-      <small *ngIf="birthday?.errors?.['pattern']">{{regexData.BIRTHDAY_REGEX_MSG_ERR}}</small>
-    </div>
-  </label>
-  <button type="submit" [disabled]="searchUserForm.invalid">Search</button>
-</form>
 <table>
   <tr>
     <th>Name:</th>
     <th>Birtday:</th>
     <th>Phone:</th>
   </tr>
-  <tr>
-    <td>Zvezdomir Stefchev 
-      <a [routerLink]="['/users/user-update', '8986r2837658243']"><i class="bi bi-pencil"></i></a> //TODO...
-      <button (click)="deleteById('9375235')"><i class="bi bi-trash"></i></button> //TODO...
+  <tr *ngFor="let user of allUsersByPageSorted">
+    <td>{{user.firstName}} {{user.lastName}}
+      <a [routerLink]="['/users/user-update', user.id]"><i class="bi bi-pencil"></i></a>
+      <button (click)="deleteById(user.id)"><i class="bi bi-trash"></i></button>
     </td>
-    <td>1971-06-26</td>
-    <td>+000000000111</td>
+    <td>{{user.birthday}}</td>
+    <td>{{user.phoneNumber}}</td>
   </tr>
 </table>
+
+<div class="pagination">
+  <button (click)="previousPage()" [disabled]="page === 0">Previous</button>
+  <span>Page {{ page + 1 }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="page >= totalPages - 1">Next</button>
+</div>
+
+<!-- {{allUsersByPageSorted.length}} -->
