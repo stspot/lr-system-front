@@ -29,11 +29,11 @@ export class CreateNewPasswordComponent {
     private store: Store<AppState>
   ) {
     this.createNewPasswordForm = new FormGroup({
-      password: new FormControl('5zh317aq!A', [
+      password: new FormControl('', [
         Validators.required,
         Validators.pattern(regexDataV.PASSWORD_REGEX),
       ]),
-      confirmPassword: new FormControl('5zh317aq!A', [
+      confirmPassword: new FormControl('', [
         Validators.required,
         Validators.pattern(regexDataV.PASSWORD_REGEX),
       ]),
@@ -51,7 +51,6 @@ export class CreateNewPasswordComponent {
 
   onSubmit() {
     if (this.createNewPasswordForm.valid) {
-      console.log(this.createNewPasswordForm.value.password);
       const urpt = this.activatedRoute.snapshot.paramMap.get('urpt')!;
       const createNewPasswordObj: IUserNewPasswordRequestModel = {
         password: this.createNewPasswordForm.value.password

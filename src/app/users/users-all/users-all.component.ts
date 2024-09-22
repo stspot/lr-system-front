@@ -66,6 +66,5 @@ export class UsersAllComponent implements OnInit {
   } 
 
   deleteById(userId: string) {
-    console.log(userId);
   }
 }

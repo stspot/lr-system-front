@@ -32,7 +32,6 @@ export class UserEffects {
       ofType(getUserByIdStart),
       switchMap((action) => this.userService.getById(action.userId).pipe(
         map(response => {
-          console.log('User Id');
           return getUserByIdSucccess({ user: response})
         }),
         catchError(error => of(getUserByIdFail({ error })))
@@ -45,7 +44,6 @@ export class UserEffects {
     ofType(getLoggedUserByIdStart),
     switchMap((action) => this.userService.getById(action.userId).pipe(
       map(response => {
-        console.log('User Id');
         return getLoggedUserByIdSucccess({ user: response})
       }),
       catchError(error => of(getLoggedUserByIdFail({ error })))
@@ -58,7 +56,6 @@ export class UserEffects {
     ofType(getAllUsersByPagesSortedStart),
     switchMap((action) => this.userService.getAllPageSorted(action.page, action.size).pipe(
       map(response => {
-        console.log('User Id');
         return getAllUsersByPagesSortedSuccess({ usersByPage: response})
       }),
       catchError(error => of(getAllUsersByPagesSortedFail({ error })))

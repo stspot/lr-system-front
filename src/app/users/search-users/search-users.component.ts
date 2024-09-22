@@ -91,6 +91,5 @@ export class SearchUsersComponent implements OnInit {
   } 
   
   deleteById(userId: string) {
-    console.log(userId);
   }
 }

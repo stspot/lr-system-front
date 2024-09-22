@@ -26,13 +26,13 @@ export class RegisterComponent implements OnInit {
     private store: Store<AppState>
   ) {
     this.registerForm = new FormGroup({
-      email: new FormControl('zstefchev@gmail.com', [Validators.required, Validators.email]),
-      password: new FormControl('sN4-%@)W.B+ZaX!+', [Validators.required, Validators.pattern(regexDataV.PASSWORD_REGEX)]),
-      confirmPassword: new FormControl('sN4-%@)W.B+ZaX!+', [Validators.required, Validators.pattern(regexDataV.PASSWORD_REGEX)]),
-      firstName: new FormControl('Zvezdomir', [Validators.required, Validators.pattern(regexDataV.FIRST_NAME_REGEX)]),
-      lastName: new FormControl('Stefchev', [Validators.required, Validators.pattern(regexDataV.LAST_NAME_REGEX)]),
-      birthday: new FormControl('1971-06-12', [Validators.required, Validators.pattern(this.regexData.BIRTHDAY_REGEX)]), //TODO...
-      phoneNumber: new FormControl('+000000000111', [Validators.required, Validators.pattern(regexDataV.PHONE_NUMBER_REGEX)])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.pattern(regexDataV.PASSWORD_REGEX)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.pattern(regexDataV.PASSWORD_REGEX)]),
+      firstName: new FormControl('', [Validators.required, Validators.pattern(regexDataV.FIRST_NAME_REGEX)]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern(regexDataV.LAST_NAME_REGEX)]),
+      birthday: new FormControl('', [Validators.required, Validators.pattern(this.regexData.BIRTHDAY_REGEX)]), //TODO...
+      phoneNumber: new FormControl('', [Validators.required, Validators.pattern(regexDataV.PHONE_NUMBER_REGEX)])
     });
   }
 
@@ -53,17 +53,16 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  //TODO...
-  logFormErrors(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        if (control.errors) {
-          console.log(`Error in ${field}:`, control.errors);
-        }
-      } else if (control instanceof FormGroup) {
-        this.logFormErrors(control);
-      }
-    });
-  }
+  // logFormErrors(formGroup: FormGroup) {
+  //   Object.keys(formGroup.controls).forEach(field => {
+  //     const control = formGroup.get(field);
+  //     if (control instanceof FormControl) {
+  //       if (control.errors) {
+  //         console.log(`Error in ${field}:`, control.errors);
+  //       }
+  //     } else if (control instanceof FormGroup) {
+  //       this.logFormErrors(control);
+  //     }
+  //   });
+  // }
 }

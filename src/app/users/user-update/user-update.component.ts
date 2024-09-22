@@ -55,8 +55,6 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
       ofType(getUserByIdSucccess),
       switchMap(() => this.userService.getById(userId))
     ).subscribe(user => {
-      console.log('User: ' + user);
-      
       this.user = user;
       this.firstName?.setValue(user.firstName);
       this.lastName?.setValue(user.lastName);
@@ -67,11 +65,9 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
   onSubmit() {
     if (this.updateProfileForm!.valid) {
       const userData: IUserResponseModel = {...this.updateProfileForm.value}
-      console.log(this.updateProfileForm!.value);
       this.user.firstName = userData.firstName;
       this.user.lastName = userData.lastName;
       this.user.phoneNumber = userData.phoneNumber;
-      console.log(this.user);
       this.store.dispatch(updateUserStart({user: this.user}))
     }
   }

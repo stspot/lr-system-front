@@ -2,8 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { IAuthResponseModel, IUserLoginModel } from '../models/user.model';
 
 export const appInterceptor: HttpInterceptorFn = (req, next) => {
-  console.log('INTERCEPTOR');  
-  
+
   if (req.method === 'OPTIONS') {
     return next(req);
   }
@@ -21,7 +20,6 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
           const clonedReq = req.clone({ 
             headers: req.headers.set('Authorization', `Bearer ${token}`) 
           });
-          console.log(authTokenObj?.token);
           return next(clonedReq);
         }
       } catch (error) {

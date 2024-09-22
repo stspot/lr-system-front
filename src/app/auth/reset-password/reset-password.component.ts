@@ -26,7 +26,7 @@ export class ResetPasswordComponent {
     private store: Store<AppState>
   ) {
     this.resetPasswordForm = new FormGroup({
-      email: new FormControl('zstefchev@gmail.com', [Validators.required, Validators.email])
+      email: new FormControl('', [Validators.required, Validators.email])
     });
   }
 

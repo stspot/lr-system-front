@@ -165,7 +165,6 @@ export class AuthEffects {
             return authResetPasswordSucccess({ rprm: resp });
           }),
           catchError((error) => {
-            console.log(error.error.message);
             this.toastr.error(error.error.message, 'Reset Password Error!');
             // this.router.navigateByUrl('/login');
             return of(authResetPasswordFail({ error }));
@@ -206,7 +205,6 @@ export class AuthEffects {
               return authCreateNewPasswordSucccess({ isCreated: resp });
             }),
             catchError((error) => {
-              console.log(error.error.message);
               this.toastr.error(
                 error.error.message,
                 'Create New Password Error!'

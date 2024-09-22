@@ -28,8 +28,8 @@ export class LoginComponent {
     private store: Store<AppState>
   ) {
     this.loginForm = new FormGroup({
-      email: new FormControl('zstefchev@gmail.com', [Validators.required, Validators.email]),
-      password: new FormControl('5zh317aq!A', [Validators.required, Validators.pattern(regexDataV.PASSWORD_REGEX)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.pattern(regexDataV.PASSWORD_REGEX)]),
     });
   }
 

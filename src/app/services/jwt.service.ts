@@ -13,10 +13,7 @@ export class JwtService {
     this.jwtHelper = new JwtHelperService();
   }
 
-  initDataInLocal(token: IAuthResponseModel) {
-    // console.log(this.decodeToken(token.authToken));
-    
-  }
+  initDataInLocal(token: IAuthResponseModel) { }
 
   getIdFromToken(): string | null {
     if (localStorage.getItem('appState') !== null) {
