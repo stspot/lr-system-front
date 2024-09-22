@@ -1,0 +1,39 @@
+table {
+    text-align: center;
+}
+
+.col1r {
+    display: flex;
+    align-items: baseline;
+}
+
+.buttons {
+    display: flex;
+}
+.buttons a {
+    color: white;
+    border-radius: 50%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(192, 81, 81);
+    outline: none;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.buttons button {
+    color: white;
+    border-radius: 50%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(192, 81, 81);
+    outline: none;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+}

@@ -23,3 +23,10 @@ export const getAllUsersByPagesSortedStart = createAction('[User] Get All Users 
 export const getAllUsersByPagesSortedSuccess = createAction('[User] Get All Users By Pages - Success', props<{usersByPage: IPageUserResponseModel}>());
 export const getAllUsersByPagesSortedFail = createAction('[User] Get All Users By Pages - Fail', props<{error: IHttpErrorResponse}>());
 
+export const deleteUserByIdStart = createAction('[User] Delete User By Id - Start', props<{userId: string}>());
+export const deleteUserByIdSuccess = createAction('[User] Delete User By Id - Success', props<{isDeleted: Boolean}>());
+export const deleteUserByIdFail = createAction('[User] Delete User By Id - Fail', props<{error: IHttpErrorResponse}>());
+
+export const deleteUserByIdFakeStart = createAction('[User] Delete User By Id Fake - Start', props<{userId: string}>());
+export const deleteUserByIdFakeSuccess = createAction('[User] Delete User By Id Fake - Success', props<{isDeleted: Boolean}>());
+export const deleteUserByIdFakeFail = createAction('[User] Delete User By Id Fake - Fail', props<{error: IHttpErrorResponse}>());

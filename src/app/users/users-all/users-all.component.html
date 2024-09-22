@@ -6,9 +6,13 @@
     <th>Phone:</th>
   </tr>
   <tr *ngFor="let user of allUsersByPageSorted">
-    <td>{{user.firstName}} {{user.lastName}}
-      <a [routerLink]="['/users/user-update', user.id]"><i class="bi bi-pencil"></i></a>
-      <button (click)="deleteById(user.id)"><i class="bi bi-trash"></i></button>
+    <td class="col1r">{{user.firstName}} {{user.lastName}}
+      <div class="buttons">
+        <a [routerLink]="['/users/user-update', user.id]"><i class="bi bi-pencil"></i></a>
+        <button 
+          *ngIf="loggedUserId !== user.id"
+          (click)="deleteById(user.id)"><i class="bi bi-trash"></i></button>
+      </div>
     </td>
     <td>{{user.birthday}}</td>
     <td>{{user.phoneNumber}}</td>

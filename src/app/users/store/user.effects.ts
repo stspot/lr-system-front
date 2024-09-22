@@ -3,7 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
 import { map, mergeMap, catchError, switchMap, tap, exhaustMap, withLatestFrom, concatMap } from 'rxjs/operators';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { getAllUsersByPagesSortedFail, getAllUsersByPagesSortedStart, getAllUsersByPagesSortedSuccess, 
+import { deleteUserByIdFail, deleteUserByIdFakeFail, deleteUserByIdFakeStart, deleteUserByIdFakeSuccess, deleteUserByIdStart, deleteUserByIdSuccess, 
+  getAllUsersByPagesSortedFail, getAllUsersByPagesSortedStart, getAllUsersByPagesSortedSuccess, 
   getLoggedUserByIdFail, 
   getLoggedUserByIdStart, getLoggedUserByIdSucccess, getUserByIdFail, getUserByIdStart, getUserByIdSucccess,
   updateUserStart,
@@ -70,6 +71,28 @@ export class UserEffects {
         return updateUserSuccess({ user: response})
       }),
       catchError(error => of(getAllUsersByPagesSortedFail({ error })))
+    ))
+  ));
+
+  deleteByIdStart$ = createEffect(() => this.actions$.pipe(
+    ofType(deleteUserByIdStart),
+    switchMap((action) => this.userService.deleteById(action.userId).pipe(
+      map(response => {
+        this.router.navigateByUrl('/users/users-all')
+        return deleteUserByIdSuccess({ isDeleted: response})
+      }),
+      catchError(error => of(deleteUserByIdFail({ error })))
+    ))
+  ));
+
+  deleteByIdFakeStart$ = createEffect(() => this.actions$.pipe(
+    ofType(deleteUserByIdFakeStart),
+    switchMap((action) => this.userService.deleteByIdFake(action.userId).pipe(
+      map(response => {
+        this.router.navigateByUrl('/users/users-all')
+        return deleteUserByIdFakeSuccess({ isDeleted: response})
+      }),
+      catchError(error => of(deleteUserByIdFakeFail({ error })))
     ))
   ));
 }

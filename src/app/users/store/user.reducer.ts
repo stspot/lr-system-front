@@ -6,7 +6,7 @@ export const USER_NAME = "user";
 
 const initialState: UserState = {
   loggedUser: null,
-  allUsersByPageSorted: []
+  allUsersByPageSorted: null 
 };
 
 const _userReducer = createReducer(

@@ -1,22 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import * as regexDataV from '../../regex/regex';
 import { CommonModule } from '@angular/common';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { authRegisterStart } from '../../auth/store/auth.actions';
-import {
-  IUserRegisterModel,
-  IUserResponseModel,
-} from '../../models/user.model';
 import { AppState } from '../../store/app.state';
-import { Router, RouterModule } from '@angular/router';
-import { getAllUsersByPagesSortedStart } from '../store/user.actions';
+import { RouterModule } from '@angular/router';
+import { deleteUserByIdStart, deleteUserByIdSuccess, getAllUsersByPagesSortedStart } from '../store/user.actions';
 import { getAllUsersByPageSorted } from '../store/user.selectors';
+import { Actions, ofType } from '@ngrx/effects';
+import { Subscription, switchMap } from 'rxjs';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-users-all',
@@ -26,6 +19,8 @@ import { getAllUsersByPageSorted } from '../store/user.selectors';
   styleUrl: './users-all.component.scss',
 })
 export class UsersAllComponent implements OnInit {
+
+  private subscription: Subscription | undefined;
   
   regexData = regexDataV;
   allUsersByPageSorted: any[] = [];
@@ -33,8 +28,14 @@ export class UsersAllComponent implements OnInit {
   page: number = 0;
   size: number = 10;
   totalPages: number = 0;
+  isTheSameUser: boolean = false;
+  loggedUserId: string = localStorage.getItem('userId')!;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(
+    private store: Store<AppState>,
+    private actions$: Actions,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -45,9 +46,9 @@ export class UsersAllComponent implements OnInit {
       getAllUsersByPagesSortedStart({ page: this.page, size: this.size })
     );
     this.store.select(getAllUsersByPageSorted).subscribe(users => {
-      this.allUsersByPageSorted = users.content;
-      this.totalElements = users.totalElements;
-      this.totalPages = users.totalPages;
+      this.allUsersByPageSorted = users!.content;
+      this.totalElements = users!.totalElements;
+      this.totalPages = users!.totalPages;
     });
   }
 
@@ -66,5 +67,20 @@ export class UsersAllComponent implements OnInit {
   } 
 
   deleteById(userId: string) {
+    this.store.dispatch(deleteUserByIdStart({userId: userId}));
+    // this.getUsers();
+
+    this.subscription = this.actions$.pipe(
+      ofType(deleteUserByIdSuccess),
+      switchMap(() => this.userService.getById(userId))
+    ).subscribe(resp => {
+      getAllUsersByPagesSortedStart({ page: this.page, size: this.size })
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

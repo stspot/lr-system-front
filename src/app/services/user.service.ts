@@ -36,9 +36,14 @@ export class UserService {
       `${this.baseApiUrl}/users/all/pages`, {params: params});
   }
 
-  deleteById(userId: string): Observable<IUserResponseModel> {
-    return this.http.get<IUserResponseModel>(
+  deleteById(userId: string): Observable<Boolean> {
+    return this.http.delete<Boolean>(
       `${this.baseApiUrl}/users/delete/${userId}`);
+  }
+
+  deleteByIdFake(userId: string): Observable<Boolean> {
+    return this.http.delete<Boolean>(
+      `${this.baseApiUrl}/users/fake/delete/${userId}`);
   }
 
   // deleteByIdFake(userId: string): Observable<IUserResponseModel> {
