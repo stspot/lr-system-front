@@ -57,7 +57,9 @@ export class SearchUsersComponent implements OnInit {
       ofType(searchUsersByPagesStart),
       switchMap((action) => this.userService.searchUsers(searchTerm, action.page, action.size))
     ).subscribe(users => {
-      this.allUsersByPageSorted = users.content
+      this.allUsersByPageSorted = users.content;
+      this.totalElements = users.totalElements;
+      this.totalPages = users.totalPages;
     });
   
 
