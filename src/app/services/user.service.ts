@@ -46,11 +46,6 @@ export class UserService {
       `${this.baseApiUrl}/users/fake/delete/${userId}`);
   }
 
-  // deleteByIdFake(userId: string): Observable<IUserResponseModel> {
-  //   return this.http.get<IUserResponseModel>(
-  //     `${this.baseApiUrl}/users/${userId}`);
-  // }
-
   searchUsers(searchTerm: string = '', page: number = 0, size: number = 10): Observable<IPageUserResponseModel> {
     let params = new HttpParams()
       .set('searchTerm', searchTerm)

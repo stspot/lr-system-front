@@ -1,30 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, of } from 'rxjs';
-import { map, mergeMap, catchError, switchMap, tap, exhaustMap, withLatestFrom, concatMap } from 'rxjs/operators';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { of } from 'rxjs';
+import { map, catchError, switchMap } from 'rxjs/operators';
 import { deleteUserByIdFail, deleteUserByIdFakeFail, deleteUserByIdFakeStart, deleteUserByIdFakeSuccess, deleteUserByIdStart, deleteUserByIdSuccess, 
   getAllUsersByPagesSortedFail, getAllUsersByPagesSortedStart, getAllUsersByPagesSortedSuccess, 
   getLoggedUserByIdFail, 
   getLoggedUserByIdStart, getLoggedUserByIdSucccess, getUserByIdFail, getUserByIdStart, getUserByIdSucccess,
   updateUserStart,
   updateUserSuccess} from './user.actions';
-import { Store } from '@ngrx/store';
-import { getLoggedUserData, getUserStateData } from './user.selectors';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { AppState } from '../../store/app.state';
 
 @Injectable()
 export class UserEffects {
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private userService: UserService,
-    private store: Store<AppState>
+    private userService: UserService
   ) { }
 
   /* GET USER BY ID EFFECT *********************************************************** */

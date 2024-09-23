@@ -68,7 +68,6 @@ export class UsersAllComponent implements OnInit {
 
   deleteById(userId: string) {
     this.store.dispatch(deleteUserByIdStart({userId: userId}));
-    // this.getUsers();
 
     this.subscription = this.actions$.pipe(
       ofType(deleteUserByIdSuccess),

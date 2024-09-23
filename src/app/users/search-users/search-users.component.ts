@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { IUserRegisterModel, IUserResponseModel } from '../../models/user.model';
+import { IUserResponseModel } from '../../models/user.model';
 import { AppState } from '../../store/app.state';
 import * as regexDataV from '../../regex/regex';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { searchUsersByPagesFail, searchUsersByPagesStart, searchUsersByPagesSuccess } from '../store/user.actions';
+import { searchUsersByPagesStart } from '../store/user.actions';
 import { Actions, ofType } from '@ngrx/effects';
-import { catchError, map, of, Subscription, switchMap } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -61,21 +61,6 @@ export class SearchUsersComponent implements OnInit {
       this.totalElements = users.totalElements;
       this.totalPages = users.totalPages;
     });
-  
-
-    // return this.actions$.pipe(
-    //   ofType(searchUsersByPagesStart),
-    //   switchMap(() => this.userService.searchUsers(searchTerm, this.page, this.size)
-    //     .pipe(
-    //       map(resp => {
-    //         console.log(resp);
-    //         return searchUsersByPagesSuccess({ usersByPage: resp });
-    //       }),
-    //       catchError(error => of(searchUsersByPagesFail({ error })))
-    //     )
-    //   )
-    // );
-
   }
 
   nextPage(): void {

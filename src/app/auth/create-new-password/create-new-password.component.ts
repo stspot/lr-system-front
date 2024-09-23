@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
-import { authConfirmRegistrationStart, authCreateNewPasswordStart } from '../store/auth.actions';
-import { IUserNewPasswordRequestModel, IUserResetPasswordRequestModel } from '../../models/user.model';
+import { authCreateNewPasswordStart } from '../store/auth.actions';
+import { IUserNewPasswordRequestModel } from '../../models/user.model';
 
 @Component({
   selector: 'app-create-new-password',

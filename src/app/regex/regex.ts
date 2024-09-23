@@ -37,10 +37,6 @@ export const LAST_NAME_REGEX_MSG_ERR =
 				+ "The input must be a valid date in the format DD/MM/YYYY, where the day is between 01 and 31, "
 				+ "the month is between 01 and 12, and the year starts with 19 or 20, followed by two digits.";
 
-// export const BIRTHDAY_REGEX_MSG_ERR =
-//   'An error occurred. Please enter a valid birthday.' +
-//   'Birthday must be a date in the past';
-
 export const PHONE_NUMBER_REGEX = '^\\+[0-9 -\\.]{7,21}$';
 export const PHONE_NUMBER_REGEX_MSG_ERR =
   'An error occurred. Please enter a valid phone number.' +

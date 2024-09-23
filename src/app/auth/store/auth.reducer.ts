@@ -1,9 +1,7 @@
 import {
   authLoginSucccess,
   authLogout,
-  loadStateFromLocalStorage,
-  loadStateFromLocalStorageSuccess,
-  setLoggedUserId,
+  loadStateFromLocalStorage
 } from './auth.actions';
 import { AuthState } from './auth.state';
 import { Action, createReducer, on } from '@ngrx/store';

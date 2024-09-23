@@ -52,17 +52,4 @@ export class RegisterComponent implements OnInit {
       this.store.dispatch(authRegisterStart({authRegister: registerObj}));
     }
   }
-
-  // logFormErrors(formGroup: FormGroup) {
-  //   Object.keys(formGroup.controls).forEach(field => {
-  //     const control = formGroup.get(field);
-  //     if (control instanceof FormControl) {
-  //       if (control.errors) {
-  //         console.log(`Error in ${field}:`, control.errors);
-  //       }
-  //     } else if (control instanceof FormGroup) {
-  //       this.logFormErrors(control);
-  //     }
-  //   });
-  // }
 }

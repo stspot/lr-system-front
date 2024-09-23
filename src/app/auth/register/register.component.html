@@ -56,7 +56,5 @@
         </div>
     </label>
     
-    <button type="submit">Register</button>
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
 </form>
-
-<!-- [disabled]="registerForm.invalid" -->

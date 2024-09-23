@@ -1,5 +1,5 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { IAuthResponseModel, IUserLoginModel } from '../models/user.model';
+import { IAuthResponseModel } from '../models/user.model';
 
 export const appInterceptor: HttpInterceptorFn = (req, next) => {
 

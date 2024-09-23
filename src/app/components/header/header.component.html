@@ -7,21 +7,8 @@
         <li><a href="/users/users-all" *ngIf="(isLoggedIn$ | async)">All Users</a></li>
         <li><a href="/users/user-profile" *ngIf="(isLoggedIn$ | async)">User Profile</a></li>
         <li><a href="/users/users-search" *ngIf="(isLoggedIn$ | async)">User Search</a></li>
-        <!-- <li><a href="/users/user-update">User Update</a></li> -->
         <li><a [routerLink]="['/auth/login']" *ngIf="!(isLoggedIn$ | async)"><i class="bi bi-door-open"></i>Login</a></li>
         <li><a [routerLink]="['/auth/register']" *ngIf="!(isLoggedIn$ | async)"><i class="bi bi-box-arrow-in-right"></i>Register</a></li>
         <li><a (click)="logout()" *ngIf="(isLoggedIn$ | async)"><i class="bi bi-box-arrow-left"></i>Logout</a></li>
-        <!-- <li><a [routerLink]="['/auth/confirm-registration']"><i class="bi bi-incognito"></i>Confirm Registration</a></li> -->
-        <!-- <li><a [routerLink]="['/auth/reset-password']"><i class="bi bi-wrench"></i>Reset Password</a></li> -->
-        <!-- <li><a [routerLink]="['/auth/create-new-password']"><i class="bi bi-plus-circle-dotted"></i>Create New Password</a></li> -->
-    </ul>
-    
-    <!-- <ul class="navbar__ul">
-        <li><a href="/users/users-all/pages">All Users By Pages</a></li>
-        <li><a href="/users/users-all">All Users</a></li>
-        <li><a href="/users/user-profile">User Profile</a></li>
-        <li><a href="/users/user-update">User Update</a></li>
-        <li><a href="/users/user-delete-id">Delete User By Id</a></li>
-        <li><a href="/users/user-delete-id-fake">Delete User By Id Fake</a></li>
-    </ul> -->
+       </ul>
 </header>

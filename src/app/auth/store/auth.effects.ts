@@ -3,12 +3,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
 import {
   map,
-  mergeMap,
   catchError,
-  switchMap,
   tap,
-  exhaustMap,
-  withLatestFrom,
+  exhaustMap
 } from 'rxjs/operators';
 import {
   authLoginFail,
